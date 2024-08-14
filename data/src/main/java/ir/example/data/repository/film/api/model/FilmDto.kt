@@ -1,0 +1,36 @@
+package ir.example.data.repository.film.api.model
+
+import com.google.gson.annotations.SerializedName
+
+data class FilmDto(
+    @SerializedName("url")
+    val url: String?,
+    @SerializedName("title")
+    val title: String?,
+    @SerializedName("opening_crawl")
+    val openingCrawl: String?,
+    @SerializedName("director")
+    val director: String?,
+    @SerializedName("producer")
+    val producer: String?,
+    @SerializedName("release_date")
+    val releaseDate: String?,
+    @SerializedName("characters")
+    val characters: List<String>?,
+    @SerializedName("planets")
+    val planets: List<String>?,
+    @SerializedName("starships")
+    val starships: List<String>?,
+    @SerializedName("vehicles")
+    val vehicles: List<String>?,
+    @SerializedName("species")
+    val species: List<String>?
+)
+
+data class FilmListDto(
+    @SerializedName("count")
+    val count: Int,
+
+    @SerializedName("results")
+    val results: List<FilmDto>?
+)

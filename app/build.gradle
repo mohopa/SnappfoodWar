@@ -1,0 +1,59 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
+    alias(libs.plugins.compose.compiler)
+}
+
+android {
+    compileSdkVersion libs.versions.androidCompileSdkVersion.get().toInteger()
+    buildToolsVersion libs.versions.androidBuildToolsVersion.get()
+
+    defaultConfig {
+        applicationId "ir.mhp.snappfoodwar"
+        minSdkVersion libs.versions.androidMinSdkVersion.get().toInteger()
+        targetSdkVersion libs.versions.androidTargetSdkVersion.get().toInteger()
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        // Enables Jetpack Compose for this module
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.3.2"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    namespace 'ir.mhp.snappfoodwar'
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(':domain')
+    implementation project(':data')
+    implementation project(':kit')
+    implementation project(':utils')
+}

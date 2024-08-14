@@ -1,0 +1,6 @@
+include ':kit'
+include ':domain'
+include ':data'
+include ':utils'
+include ':app'
+rootProject.name = "Snappfood War"

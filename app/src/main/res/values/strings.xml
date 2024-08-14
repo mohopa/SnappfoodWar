@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Star Wars App MVVM</string>
+    <string name="character_detail">Character Details</string>
+    <string name="enter_character_name">Enter name</string>
+    <string name="character_height">Height: %1$s cm , %2$s inch, %3$s feet</string>
+    <string name="birth_date">Birthday: %1$s</string>
+</resources>

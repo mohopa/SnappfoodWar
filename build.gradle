@@ -1,0 +1,80 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://maven.google.com/" }
+        //jcenter()
+    }
+    dependencies {
+        classpath(libs.plugin.r8)
+        classpath(libs.plugin.android)
+        classpath(libs.plugin.kotlin)
+        classpath(libs.plugin.kotlinSerialization)
+        classpath(libs.plugin.argsSafe)
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://maven.google.com/" }
+        maven { url 'https://jitpack.io' }
+        //jcenter()
+    }
+}
+
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            android {
+
+                compileSdkVersion libs.versions.androidCompileSdkVersion.get().toInteger()
+                buildToolsVersion libs.versions.androidBuildToolsVersion.get()
+
+                defaultConfig {
+                    minSdkVersion libs.versions.androidMinSdkVersion.get().toInteger()
+                    targetSdkVersion libs.versions.androidTargetSdkVersion.get().toInteger()
+                    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+                    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+                }
+
+                dataBinding {
+                    enabled true
+                }
+
+                viewBinding {
+                    enabled true
+                }
+
+                compileOptions {
+                    sourceCompatibility JavaVersion.VERSION_1_8
+                    targetCompatibility JavaVersion.VERSION_1_8
+                }
+
+                kotlinOptions {
+                    jvmTarget = "1.8"
+                }
+
+                testOptions {
+                    unitTests.returnDefaultValues = true
+                }
+
+                buildFeatures {
+                    // Enables Jetpack Compose for this module
+                    compose true
+                }
+
+                composeOptions {
+                    kotlinCompilerExtensionVersion = "1.3.2"
+                }
+            }
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

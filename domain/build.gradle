@@ -1,0 +1,20 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
+    alias(libs.plugins.compose.compiler)
+}
+
+
+android {
+    namespace 'ir.mhp.domain'
+}
+
+dependencies {
+
+    api project(':utils')
+
+    api libs.lifecycle.livedata
+    api libs.lifecycle.reactive
+}

@@ -1,0 +1,61 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'androidx.navigation.safeargs.kotlin'
+    alias(libs.plugins.compose.compiler)
+}
+android {
+    namespace 'ir.mhp.utils'
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //activity
+    api libs.activity
+    api libs.fragment
+
+    //Support
+    api libs.support.annotations
+    api libs.support.app.compat
+    api libs.support.recyclerview
+    api libs.support.cardview
+    api libs.support.design
+    api libs.support.v4
+    api libs.support.core.utils
+    api libs.support.constraint.layout
+
+    // Lifecycle
+    api libs.lifecycle.extensions
+    api libs.lifecycle.java8
+    api libs.lifecycle.livedata
+    api libs.lifecycle.viewmodel
+    //kapt libs.lifecycle.compiler
+
+    api libs.kotlin.stdlib
+    api libs.kotlin.ktx
+
+    // Koin
+    api(platform(libs.koin.bom))
+    api libs.koin.core
+    //api libs.koin.scope
+    api libs.koin.android
+    //api libs.koin.viewmodel
+
+    //Gson
+    api libs.network.gson
+
+    //Compose
+    api libs.compose.ui
+    api libs.compose.ui.util
+    api libs.compose.ui.tooling
+    api libs.compose.foundation
+    api libs.compose.material
+    api libs.compose.material.icons
+    api libs.compose.livedata
+    api libs.compose.activity
+    api libs.compose.navigation
+    api libs.compose.pager
+    api libs.compose.system.ui
+}

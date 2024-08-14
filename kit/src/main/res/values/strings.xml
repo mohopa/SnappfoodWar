@@ -1,0 +1,4 @@
+<resources>
+    <string name="error_get_film">Error retrive film data!</string>
+    <string name="retry">RETRY</string>
+</resources>
