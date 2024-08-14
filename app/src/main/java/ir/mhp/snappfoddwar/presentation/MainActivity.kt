@@ -15,12 +15,16 @@ import ir.mhp.utils.constants.SCOPE_ID
 import ir.mhp.utils.constants.SCOPE_NAME
 import ir.mhp.utils.extension.getOrCreateScope
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.google.gson.Gson
 import ir.mhp.snappfoddwar.presentation.navigation.SetUpNavController
 import ir.mhp.snappfoddwar.presentation.ui.theme.SnappfoodWar
+import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
     private val viewModelScope =
             getOrCreateScope(SCOPE_ID, SCOPE_NAME)
+
+    val gson : Gson by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +46,7 @@ class MainActivity : ComponentActivity() {
                     systemUiController.setSystemBarsColor(
                         color = Color.Black
                     )
-                    SetUpNavController(rememberNavController(), viewModelScope)
+                    SetUpNavController(rememberNavController(), viewModelScope,gson)
                 }
             }
         }
